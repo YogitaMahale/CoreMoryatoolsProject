@@ -1,6 +1,6 @@
 using System;
 
-namespace CoreMoryatools.Models
+namespace CoreMoryatools.Models.ViewModels
 {
     public class ErrorViewModel
     {
