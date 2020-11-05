@@ -12,6 +12,8 @@ using CoreMoryatools.DataAccess.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using CoreMoryatools.DataAccess.Repository.IRepository;
+using CoreMoryatools.DataAccess.Repository;
 
 namespace CoreMoryatools
 {
@@ -33,6 +35,7 @@ namespace CoreMoryatools
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             services.AddDefaultIdentity<IdentityUser>()
                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IUnitofWork, UnitofWork>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
