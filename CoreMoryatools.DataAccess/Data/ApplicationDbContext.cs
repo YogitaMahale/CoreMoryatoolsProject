@@ -14,5 +14,8 @@ namespace CoreMoryatools.DataAccess.Data
         {
         }
         public DbSet<Category> Category { get; set; }
+        public DbSet<product> product { get; set; }
+        public DbSet<productimages> productimages { get; set; }
+        
     }
 }

@@ -13,22 +13,32 @@ function loadtable() {
             //"datatype": "json"
         },
         "columns": [
-            { "data": "Name", "width": "30% " },
+            { "data": "name", "width": "20% " },
+ 
+            {
+                "data": "img",
+                "render": function (data) {
+                    return ` <img src='${data}'   width="50" height="50"/>`
+                }, "width": "20%"
 
-            { "data": "img", "width": "30% " },
+            }
+            , { "data": "shortdesc", "width": "40% " },
+          
+            //{ "data": "img", "width": "30% " },
+          
             {
                 "data": "id",
                 "render": function (data) {
                     return `
 <div class="text-center">
-    <a href="/Admin/Category/Upsert/${data}" class="btn btn-success text-white" style="cursor:pointer">
+    <a href="/Admin/Category/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
         Edit
     </a>
     <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Category/Delete/${data}")>
         Delete
     </a>
 </div>`
-                }, "width": "40%" 
+                }, "width": "20%" 
 
             }
 
@@ -52,7 +62,8 @@ function Delete(url) {
                 success: function (data) {
                     if (data.success) {
                         toastr.success(data.message);
-                        dataTable.ajax.reload();
+                      /*  dataTable.ajax.reload()*/;
+                        $('#tblData').DataTable().ajax.reload()
                     }
                     else {
                         toastr.error(data.message); 

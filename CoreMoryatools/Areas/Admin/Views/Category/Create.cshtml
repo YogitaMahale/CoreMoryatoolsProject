@@ -1,0 +1,393 @@
+﻿@*@model CoreMoryatools.Models.ViewModels.CategoryCreateViewModel
+        //ViewBag.Title = "Add Category";
+    }*@
+
+@model CoreMoryatools.Models.ViewModels.CategoryCreateViewModel
+@{
+    var title = "Create Category";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-i">
+    <div class="content-box">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="element-wrapper">
+                    <div class="element-box">
+                        <form method="post" enctype="multipart/form-data" asp-action="Create">
+                            <h5 class="form-header">Add New Category</h5>
+                            <div class="form-desc">
+                                @*Validation of the form is made possible using powerful validator plugin for bootstrap.
+                                    <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name"> </label>
+                                <input class="form-control" asp-for="Name" data-error="Your email address is invalid" placeholder="Enter email" required="required" type="text" />
+                                @*<div class="help-block form-text with-errors form-control-feedback"></div>*@
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+
+
+                                <label asp-for="shortdesc"> </label>
+                                <input class="form-control" asp-for="shortdesc" placeholder="Password" required="required" type="text" />
+                                @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
+
+
+                            </div>
+                            <div class="form-group">
+
+
+                                <label asp-for="longdescp"> </label>
+                                <input class="form-control" asp-for="longdescp" placeholder="Password" required="required" type="text" />
+                                @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
+
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <label asp-for="img"></label>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <div class="btn btn-primary btn-icon-text">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <input asp-for="img" type="file" value="Upload" />
+                                        <span asp-validation-for="img" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="form-check">
+                                    <label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to terms and conditions</label>
+                                </div>*@
+                            <div class="form-buttons-w">
+                                @*<button class="btn btn-primary" type="submit">Submit</button>*@
+
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
+
+
+                                <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                                <label id="divMessage"></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="floated-colors-btn second-floated-btn">
+                <div class="os-toggler-w">
+                    <div class="os-toggler-i"><div class="os-toggler-pill"></div></div>
+                </div>
+                <span>Dark </span><span>Colors</span>
+            </div>
+            <div class="floated-customizer-btn third-floated-btn">
+                <div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
+                <span>Customizer</span>
+            </div>
+            <div class="floated-customizer-panel">
+                <div class="fcp-content">
+                    <div class="close-customizer-btn"><i class="os-icon os-icon-x"></i></div>
+                    <div class="fcp-group">
+                        <div class="fcp-group-header">Menu Settings</div>
+                        <div class="fcp-group-contents">
+                            <div class="fcp-field">
+                                <label for="">Menu Position</label>
+                                <select class="menu-position-selector">
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                    <option value="top">Top</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Menu Style</label>
+                                <select class="menu-layout-selector">
+                                    <option value="compact">Compact</option>
+                                    <option value="full">Full</option>
+                                    <option value="mini">Mini</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field with-image-selector-w">
+                                <label for="">With Image</label>
+                                <select class="with-image-selector">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Menu Color</label>
+                                <div class="fcp-colors menu-color-selector">
+                                    <div class="color-selector menu-color-selector color-bright selected"></div>
+                                    <div class="color-selector menu-color-selector color-dark"></div>
+                                    <div class="color-selector menu-color-selector color-light"></div>
+                                    <div class="color-selector menu-color-selector color-transparent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fcp-group">
+                        <div class="fcp-group-header">Sub Menu</div>
+                        <div class="fcp-group-contents">
+                            <div class="fcp-field">
+                                <label for="">Sub Menu Style</label>
+                                <select class="sub-menu-style-selector">
+                                    <option value="flyout">Flyout</option>
+                                    <option value="inside">Inside/Click</option>
+                                    <option value="over">Over</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Sub Menu Color</label>
+                                <div class="fcp-colors">
+                                    <div class="color-selector sub-menu-color-selector color-bright selected"></div>
+                                    <div class="color-selector sub-menu-color-selector color-dark"></div>
+                                    <div class="color-selector sub-menu-color-selector color-light"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fcp-group">
+                        <div class="fcp-group-header">Other Settings</div>
+                        <div class="fcp-group-contents">
+                            <div class="fcp-field">
+                                <label for="">Full Screen?</label>
+                                <select class="full-screen-selector">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Show Top Bar</label>
+                                <select class="top-bar-visibility-selector">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Above Menu?</label>
+                                <select class="top-bar-above-menu-selector">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="fcp-field">
+                                <label for="">Top Bar Color</label>
+                                <div class="fcp-colors">
+                                    <div class="color-selector top-bar-color-selector color-bright selected"></div>
+                                    <div class="color-selector top-bar-color-selector color-dark"></div>
+                                    <div class="color-selector top-bar-color-selector color-light"></div>
+                                    <div class="color-selector top-bar-color-selector color-transparent"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="floated-chat-btn"><i class="os-icon os-icon-mail-07"></i><span>Demo Chat</span></div>
+            <div class="floated-chat-w">
+                <div class="floated-chat-i">
+                    <div class="chat-close"><i class="os-icon os-icon-close"></i></div>
+                    <div class="chat-head">
+                        <div class="user-w with-status status-green">
+                            <div class="user-avatar-w">
+                                <div class="user-avatar"><img alt="" src="img/avatar1.jpg" /></div>
+                            </div>
+                            <div class="user-name">
+                                <h6 class="user-title">John Mayers</h6>
+                                <div class="user-role">Account Manager</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message"><div class="message-content">Hi, how can I help you?</div></div>
+                        <div class="date-break">Mon 10:20am</div>
+                        <div class="message"><div class="message-content">Hi, my name is Mike, I will be happy to assist you</div></div>
+                        <div class="message self"><div class="message-content">Hi, I tried ordering this product and it keeps showing me error code.</div></div>
+                    </div>
+                    <div class="chat-controls">
+                        <input class="message-input" placeholder="Type your message here..." />
+                        <div class="chat-extra">
+                            <a href="#"><span class="extra-tooltip">Attach Document</span><i class="os-icon os-icon-documents-07"></i></a>
+                            <a href="#"><span class="extra-tooltip">Insert Photo</span><i class="os-icon os-icon-others-29"></i></a>
+                            <a href="#"><span class="extra-tooltip">Upload Video</span><i class="os-icon os-icon-ui-51"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    @*<div class="content-panel">
+            <div class="content-panel-close"><i class="os-icon os-icon-close"></i></div>
+            <div class="element-wrapper">
+                <h6 class="element-header">Support Agents</h6>
+                <div class="element-box-tp">
+                    <div class="profile-tile">
+                        <a class="profile-tile-box" href="users_profile_small.html">
+                            <div class="pt-avatar-w"><img alt="" src="img/avatar1.jpg" /></div>
+                            <div class="pt-user-name">John Mayers</div>
+                        </a>
+                        <div class="profile-tile-meta">
+                            <ul>
+                                <li>Last Login:<strong>Online Now</strong></li>
+                                <li>
+                                    Tickets:<strong><a href="apps_support_index.html">12</a></strong>
+                                </li>
+                                <li>Response Time:<strong>2 hours</strong></li>
+                            </ul>
+                            <div class="pt-btn"><a class="btn btn-success btn-sm" href="apps_full_chat.html">Send Message</a></div>
+                        </div>
+                    </div>
+                    <div class="profile-tile">
+                        <a class="profile-tile-box" href="users_profile_small.html">
+                            <div class="pt-avatar-w"><img alt="" src="img/avatar3.jpg" /></div>
+                            <div class="pt-user-name">Ben Gossman</div>
+                        </a>
+                        <div class="profile-tile-meta">
+                            <ul>
+                                <li>Last Login:<strong>Offline</strong></li>
+                                <li>
+                                    Tickets:<strong><a href="apps_support_index.html">9</a></strong>
+                                </li>
+                                <li>Response Time:<strong>3 hours</strong></li>
+                            </ul>
+                            <div class="pt-btn"><a class="btn btn-secondary btn-sm" href="apps_full_chat.html">Send Message</a></div>
+                        </div>
+                    </div>
+                    <div class="profile-tile">
+                        <a class="profile-tile-box" href="users_profile_small.html">
+                            <div class="pt-avatar-w"><img alt="" src="img/avatar2.jpg" /></div>
+                            <div class="pt-user-name">Ken Sorrons</div>
+                        </a>
+                        <div class="profile-tile-meta">
+                            <ul>
+                                <li>Last Login:<strong>Offline</strong></li>
+                                <li>
+                                    Tickets:<strong><a href="apps_support_index.html">17</a></strong>
+                                </li>
+                                <li>Response Time:<strong>1 hour</strong></li>
+                            </ul>
+                            <div class="pt-btn"><a class="btn btn-danger btn-sm" href="apps_full_chat.html">Send Message</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element-wrapper">
+                <h6 class="element-header">Side Tables</h6>
+                <div class="element-box">
+                    <h5 class="form-header">Table in white box</h5>
+                    <div class="form-desc">You can put a table tag inside an <code>.element-box</code> class wrapper and add <code>.table</code> class to it to get something like this:</div>
+                    <div class="controls-above-table">
+                        <div class="row">
+                            <div class="col-sm-12"><a class="btn btn-sm btn-primary" href="#">Download CSV</a><a class="btn btn-sm btn-danger" href="#">Delete</a></div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-lightborder">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Mayers</td>
+                                    <td class="text-center"><div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Kelly Brans</td>
+                                    <td class="text-center"><div class="status-pill red" data-title="Cancelled" data-toggle="tooltip"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Tim Howard</td>
+                                    <td class="text-center"><div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Joe Trulli</td>
+                                    <td class="text-center"><div class="status-pill yellow" data-title="Pending" data-toggle="tooltip"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>Fred Kolton</td>
+                                    <td class="text-center"><div class="status-pill green" data-title="Complete" data-toggle="tooltip"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@*<div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-action="Index">  Category List</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">New   Category</li>
+                    </ol>
+                </nav><br /><br />
+
+
+                <form method="post" enctype="multipart/form-data" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group col-md-2">
+                            <label asp-for="Name"></label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name.." />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <label asp-for="img"></label>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="btn btn-primary btn-icon-text">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <input asp-for="img" type="file" value="Upload" />
+                                <span asp-validation-for="img" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
+
+
+                        <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                        <label id="divMessage"></label>
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+
+    </script>*@

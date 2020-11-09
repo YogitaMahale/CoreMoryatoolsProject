@@ -4,14 +4,16 @@ using CoreMoryatools.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoreMoryatools.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201109115908_add product table ")]
+    partial class addproducttable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,30 +173,6 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.HasIndex("cid");
 
                     b.ToTable("product");
-                });
-
-            modelBuilder.Entity("CoreMoryatools.Models.productimages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("imagename")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isdelete")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("pid")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("pid");
-
-                    b.ToTable("productimages");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -402,15 +380,6 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.HasOne("CoreMoryatools.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("cid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CoreMoryatools.Models.productimages", b =>
-                {
-                    b.HasOne("CoreMoryatools.Models.product", "product")
-                        .WithMany()
-                        .HasForeignKey("pid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
