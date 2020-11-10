@@ -8,8 +8,9 @@ namespace CoreMoryatools.DataAccess.Repository.IRepository
     {
       //  IApplicationUserRepository applicationUser { get; }
         ICategoryRepository category { get; }
-       // ICoverTypeRepository coverType { get; }
-       // IProductRepository product { get; }
+        IproductRepository product { get; }
+        // ICoverTypeRepository coverType { get; }
+        // IProductRepository product { get; }
         ISP_CALL sp_call { get; }
       //  IcompanyRepository company { get; }
 

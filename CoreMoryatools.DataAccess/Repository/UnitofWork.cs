@@ -13,6 +13,7 @@ namespace CoreMoryatools.DataAccess.Repository
         {
             _db = db;
             category = new CategoryRepository(_db);
+            product = new productRepository(_db);
             sp_call = new SP_CALL(_db);
             //coverType = new CoverTypeRepository(_db);
             //product = new ProductRepository(_db);
@@ -24,7 +25,7 @@ namespace CoreMoryatools.DataAccess.Repository
         }
        // public IApplicationUserRepository applicationUser  { get; private set; }
         public ICategoryRepository category { get; private set; }
-
+        public IproductRepository product { get; private set; }
         //public ICoverTypeRepository coverType { get; private set; }
 
         //public IProductRepository product { get; private set; }
