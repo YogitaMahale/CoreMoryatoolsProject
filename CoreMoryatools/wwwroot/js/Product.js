@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
 
-    loadtable();
+  //  loadtable();
 });
 
 function loadtable() {
@@ -17,6 +17,15 @@ function loadtable() {
             
             { "data": "id", "width": "20% " },
             { "data": "productname", "width": "20% " },
+            // {
+            //     "data": "isactive",
+            //    "render": function (data) {
+            //        return ` <input class="form-control"  type="checkbox" /> 
+
+            //             ` 
+            //    }, "width": "20%"
+
+            //},
             { "data": "sku", "width": "20% " },
             { "data": "landingPrice", "width": "20% " },
             { "data": "superwholesaleprice", "width": "20% " },
@@ -85,4 +94,66 @@ function Delete(url) {
 
     });
 
+}
+
+
+function loadtable1(id) {
+  //  alert(id);
+    var data = JSON.stringify({
+        'categoryid': id
+        //,
+        //'IsPrimary': true
+    });
+
+    datatable = $('#tblData').DataTable({
+        "ajax": {
+           // "url": "/Admin/Product/GetALL" ,
+            "url": "/Admin/Product/GetALL?categoryid=" + id
+           // "data": data
+            // "type": "GET",
+            //"datatype": "json"
+        },
+        "columns": [
+
+
+            { "data": "id", "width": "20% " },
+            { "data": "productname", "width": "20% " },
+            { "data": "sku", "width": "20% " },
+            { "data": "landingPrice", "width": "20% " },
+            { "data": "superwholesaleprice", "width": "20% " },
+            { "data": "dealerprice", "width": "20% " },
+            { "data": "wholesaleprice", "width": "20% " },
+            { "data": "customerprice", "width": "20% " },
+            { "data": "gst", "width": "20% " },
+            { "data": "quantites", "width": "20% " },
+            { "data": "realStock", "width": "20% " },
+
+
+            //{
+            //    "data": "img",
+            //    "render": function (data) {
+            //        return ` <img src='${data}'   width="50" height="50"/>`
+            //    }, "width": "20%"
+
+            //}
+
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `
+<div class="text-center">
+    <a href="/Admin/Product/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
+        Edit
+    </a>
+    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Product/Delete/${data}")>
+        Delete
+    </a>
+</div>`
+                }, "width": "20%"
+
+            }
+
+        ]
+        , "bDestroy": true
+    });
 }

@@ -296,11 +296,16 @@ namespace CoreMoryatools.Areas.Admin.Controllers
       
         #region "API CALL"
         [HttpGet]
-        public IActionResult GetALL()
+        public IActionResult GetALL(int categoryid)
         {
-            var obj = _unitofWork.product.GetAll().Where(x => x.isdelete == false);
+            var obj = _unitofWork.product.GetAll().Where(x => x.isdelete == false&&x.cid==categoryid);
             return Json(new { data = obj });
         }
+        //public IActionResult GetALL()
+        //{
+        //    var obj = _unitofWork.product.GetAll().Where(x => x.isdelete == false);
+        //    return Json(new { data = obj });
+        //}
 
         [HttpDelete]
         public IActionResult Delete(int id)
