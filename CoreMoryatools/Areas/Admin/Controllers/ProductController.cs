@@ -25,6 +25,7 @@ namespace CoreMoryatools.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            ViewBag.categorylist = _unitofWork.category.GetAll().ToList();
             return View();
         }
 
@@ -38,39 +39,98 @@ namespace CoreMoryatools.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CategoryCreateViewModel model)
+        public async Task<IActionResult> Create(ProductCreateViewModel model)
         {
             if (ModelState.IsValid)
             {
 
-                var objcategory = new Category
+                 
+                int maxseqno = _unitofWork.product.GetAll().Where(x => x.isdelete == false && x.cid == model.cid).Select(p => p.seqno ).DefaultIfEmpty(0).Max();
+                maxseqno++;
+                int t = 0;
+                var objcategory = new product
                 {
-                    id = model.id
-                    ,
-                    Name = model.Name
-                    ,
-                    shortdesc = model.shortdesc
-                    ,
+                    Id = model.Id
+      ,
+                    cid = model.cid
+      ,
+                    productname = model.productname
+       
+      ,
+                    HSNCode = model.HSNCode
+      ,
+                    sku = model.sku
+      ,
+                    customerprice = model.customerprice
+      ,
+                    dealerprice = model.dealerprice
+      ,
+                    wholesaleprice = model.wholesaleprice
+      ,
+                    superwholesaleprice = model.superwholesaleprice
+      ,
+                    discountprice = model.discountprice
+      ,
+                    shortdescp = model.shortdescp
+      ,
                     longdescp = model.longdescp
-                   ,
-                    isdeleted = false
-                    ,
-                    isactive = false
+      ,
+                    gst = model.gst
+      ,
+                    LandingPrice = model.LandingPrice
+      ,
+                    alertquantites = model.alertquantites
+      ,
+                    quantites = model.quantites
+      ,
+                    RealStock = model.RealStock
+      ,
+                    seqno = maxseqno
+      ,
+                    video1 = model.video1
+      ,
+                    video2 = model.video2
+      ,
+                    video3 = model.video3
+      ,
+                    video4 = model.video4
+      ,
+                    video_name_1 = model.video_name_1
+      ,
+                    video_name_2 = model.video_name_2
+      ,
+                    video_name_3 = model.video_name_3
+      ,
+                    video_name_4 = model.video_name_4
+      ,
+                    createddate = model.createddate
+      ,
+                    modifieddate = model.modifieddate
+      ,
+                    isstock = model.isstock
+      ,
+                    isactive = model.isactive
+      ,
+                    isdelete = false 
+      ,
+                    isHotproduct = model.isHotproduct
+      ,
+                    isNewArrivalProduct = model.isNewArrivalProduct
 
                 };
-                if (model.img != null && model.img.Length > 0)
+                if (model.mainimage  != null && model.mainimage.Length > 0)
                 {
-                    var uploadDir = @"uploads/categoryimg";
-                    var fileName = Path.GetFileNameWithoutExtension(model.img.FileName);
-                    var extesion = Path.GetExtension(model.img.FileName);
+                    var uploadDir = @"uploads/Product";
+                    var fileName = Path.GetFileNameWithoutExtension(model.mainimage.FileName);
+                    var extesion = Path.GetExtension(model.mainimage.FileName);
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
-                    objcategory.img = '/' + uploadDir + '/' + fileName;
+                    await model.mainimage.CopyToAsync(new FileStream(path, FileMode.Create));
+                    objcategory.mainimage = '/' + uploadDir + '/' + fileName;
 
                 }
-                _unitofWork.category.Add(objcategory);
+                _unitofWork.product.Add(objcategory);
                 _unitofWork.Save();
                 TempData["success"] = "Record Save successfully";
                 return RedirectToAction(nameof(Index));
@@ -83,51 +143,143 @@ namespace CoreMoryatools.Areas.Admin.Controllers
         }
         public IActionResult Edit(int id)
         {
-
-            var objcategory = _unitofWork.category.Get(id);
-            if (objcategory == null)
+            ViewBag.categorylist = _unitofWork.category.GetAll().ToList();
+            var model = _unitofWork.product.Get(id);
+            if (model == null)
             {
                 return NotFound();
             }
-            var model = new CategoryEditViewModel()
+            var model1 = new ProductEditViewModel()
             {
-                id = objcategory.id,
-                Name = objcategory.Name,
-                shortdesc = objcategory.shortdesc,
-                longdescp = objcategory.longdescp
+                Id = model.Id
+      ,
+                cid = model.cid
+      ,
+                productname = model.productname
+      //,
+      //          mainimage = model.mainimage
+      ,
+                HSNCode = model.HSNCode 
+      ,
+                sku = model.sku
+      ,
+                customerprice = model.customerprice
+      ,
+                dealerprice = model.dealerprice
+      ,
+                wholesaleprice = model.wholesaleprice
+      ,
+                superwholesaleprice = model.superwholesaleprice
+      ,
+                discountprice = model.discountprice 
+      ,
+                shortdescp = model.shortdescp 
+      ,
+                longdescp = model.longdescp 
+      ,
+                gst = model.gst 
+      ,
+                LandingPrice = model.LandingPrice 
+      ,
+                alertquantites = model.alertquantites 
+      ,
+                quantites = model.quantites 
+      ,
+                RealStock = model.RealStock 
+      
+      ,
+                video1 = model.video1 
+      ,
+                video2 = model.video2
+      ,
+                video3 = model.video3
+      ,
+                video4 = model.video4
+      ,
+                video_name_1 = model.video_name_1
+      ,
+                video_name_2 = model.video_name_2
+      ,
+                video_name_3 = model.video_name_3
+      ,
+                video_name_4 = model.video_name_4
+      ,
+                createddate = model.createddate
+      ,
+                modifieddate = model.modifieddate
+      ,
+                isstock = model.isstock
+      ,
+                isactive = model.isactive
+      
+      
+      ,
+                isHotproduct = model.isHotproduct 
+      ,
+                isNewArrivalProduct = model.isNewArrivalProduct 
 
             };
-            return View(model);
+            return View(model1);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(CategoryEditViewModel model)
+        public async Task<IActionResult> Edit(ProductEditViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var storeobj = _unitofWork.category.Get(model.id);
-                if (storeobj == null)
+                var obj = _unitofWork.product .Get(model.Id);
+                if (obj == null)
                 {
                     TempData["error"] = "Record Not Found";
                     return NotFound();
                 }
-                storeobj.id = model.id;
-                storeobj.Name = model.Name;
-                storeobj.shortdesc = model.shortdesc;
-                storeobj.longdescp = model.longdescp;
-                if (model.img != null && model.img.Length > 0)
+                obj.Id = model.Id;
+                obj.cid = model.cid;
+                obj.productname = model.productname;
+               
+                obj.HSNCode = model.HSNCode;
+                obj.sku = model.sku;
+                obj.customerprice = model.customerprice;
+                obj.dealerprice = model.dealerprice;
+                obj.wholesaleprice = model.wholesaleprice;
+                obj.superwholesaleprice = model.superwholesaleprice;
+                obj.discountprice = model.discountprice;
+                obj.shortdescp = model.shortdescp;
+                obj.longdescp = model.longdescp;
+                obj.gst = model.gst;
+                obj.LandingPrice = model.LandingPrice;
+                obj.alertquantites = model.alertquantites;
+                obj.quantites = model.quantites;
+                obj.RealStock = model.RealStock;
+
+                obj.video1 = model.video1;
+                obj.video2 = model.video2;
+                obj.video3 = model.video3;
+                obj.video4 = model.video4;
+                obj.video_name_1 = model.video_name_1;
+                obj.video_name_2 = model.video_name_2;
+                obj.video_name_3 = model.video_name_3;
+                obj.video_name_4 = model.video_name_4;
+                obj.createddate = model.createddate;
+                obj.modifieddate = model.modifieddate;
+                obj.isstock = model.isstock;
+                obj.isactive = model.isactive;
+
+                obj.isHotproduct = model.isHotproduct;
+                obj.isNewArrivalProduct = model.isNewArrivalProduct;
+                if (model.mainimage != null && model.mainimage.Length > 0)
                 {
-                    var uploadDir = @"uploads/categoryimg";
-                    var fileName = Path.GetFileNameWithoutExtension(model.img.FileName);
-                    var extesion = Path.GetExtension(model.img.FileName);
+                    var uploadDir = @"uploads/product";
+                    var fileName = Path.GetFileNameWithoutExtension(model.mainimage.FileName);
+                    var extesion = Path.GetExtension(model.mainimage.FileName);
                     var webRootPath = _hostingEnvironment.WebRootPath;
                     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extesion;
                     var path = Path.Combine(webRootPath, uploadDir, fileName);
-                    await model.img.CopyToAsync(new FileStream(path, FileMode.Create));
-                    storeobj.img = '/' + uploadDir + '/' + fileName;
+                    await model.mainimage.CopyToAsync(new FileStream(path, FileMode.Create));
+                    obj.mainimage = '/' + uploadDir + '/' + fileName;
 
                 }
-                _unitofWork.category.Update(storeobj);
+                _unitofWork.product.Update(obj);
                 _unitofWork.Save();
                 TempData["success"] = "Record Update successfully";
                 return RedirectToAction(nameof(Index));

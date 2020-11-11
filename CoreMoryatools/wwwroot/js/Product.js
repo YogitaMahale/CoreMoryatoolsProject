@@ -15,17 +15,17 @@ function loadtable() {
         "columns": [
 
             
-            { "data": "Id", "width": "20% " },
+            { "data": "id", "width": "20% " },
             { "data": "productname", "width": "20% " },
             { "data": "sku", "width": "20% " },
-            { "data": "LandingPrice", "width": "20% " },
+            { "data": "landingPrice", "width": "20% " },
             { "data": "superwholesaleprice", "width": "20% " },
             { "data": "dealerprice", "width": "20% " },
             { "data": "wholesaleprice", "width": "20% " },
             { "data": "customerprice", "width": "20% " },          
             { "data": "gst", "width": "20% " },
             { "data": "quantites", "width": "20% " },
-            { "data": "RealStock", "width": "20% " },
+            { "data": "realStock", "width": "20% " },
              
  
             //{

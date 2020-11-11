@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -21,7 +22,7 @@ namespace CoreMoryatools.Models.ViewModels
         public string productname { get; set; }
          
         [Display(Name = "Select Photo")]
-        public string mainimage { get; set; }
+        public IFormFile mainimage { get; set; }
         
         [Display(Name = "HSN Code")]
         public string HSNCode { get; set; }
@@ -85,7 +86,7 @@ namespace CoreMoryatools.Models.ViewModels
         [Display(Name = "Is Active")]
         public Boolean isactive { get; set; }
 
-        public Boolean isdelete { get; set; }
+        
         [Display(Name = "Is HotProduct")]
         public Boolean isHotproduct { get; set; }
         [Display(Name = "Is NewArrivalProduct")]

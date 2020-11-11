@@ -36,6 +36,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="wwwroot\uploads\categoryimg\" />
+    <Folder Include="wwwroot\uploads\product\" />
   </ItemGroup>
 
   <ItemGroup>
