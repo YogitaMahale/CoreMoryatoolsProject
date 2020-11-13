@@ -18,12 +18,12 @@ namespace CoreMoryatools.DataAccess.Repository
             //coverType = new CoverTypeRepository(_db);
             //product = new ProductRepository(_db);
             //company = new companyRepository(_db);
-            //applicationUser = new ApplicationUserRepository(_db);
-            //shoppingCartsRepository = new shoppingCartsRepository(_db);
-            //orderDetailsRepository = new OrderDetailsRepository(_db);
-            //orderHeadersRepository = new orderHeadersRepository(_db);
+            applicationUser = new ApplicationUserRepository(_db);
+            country  = new countryRepository(_db);
+            state   = new stateRepository(_db);
+            city = new cityRepository(_db);
         }
-       // public IApplicationUserRepository applicationUser  { get; private set; }
+        public IApplicationUserRepository applicationUser  { get; private set; }
         public ICategoryRepository category { get; private set; }
         public IproductRepository product { get; private set; }
         //public ICoverTypeRepository coverType { get; private set; }
@@ -32,9 +32,9 @@ namespace CoreMoryatools.DataAccess.Repository
         public ISP_CALL sp_call { get; private set; }
         //public IcompanyRepository company { get; private set; }
 
-        //public IshoppingCartsRepository shoppingCartsRepository { get; private set; }
-        //public IorderHeadersRepository orderHeadersRepository { get; private set; }
-        //public IOrderDetailsRepository orderDetailsRepository { get; private set; }
+        public IcountryRepository country { get; private set; }
+        public IstateRepository  state { get; private set; }
+        public IcityRepository  city{ get; private set; }
 
         //public IshoppingCartsRepository shoppingCarts => throw new NotImplementedException();
 

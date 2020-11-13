@@ -59,6 +59,58 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.ToTable("Category");
                 });
 
+            modelBuilder.Entity("CoreMoryatools.Models.city", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("stateid")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("stateid");
+
+                    b.ToTable("city");
+                });
+
+            modelBuilder.Entity("CoreMoryatools.Models.country", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("countrycode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.ToTable("country");
+                });
+
             modelBuilder.Entity("CoreMoryatools.Models.product", b =>
                 {
                     b.Property<int>("Id")
@@ -197,6 +249,33 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.ToTable("productimages");
                 });
 
+            modelBuilder.Entity("CoreMoryatools.Models.state", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("countryid")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("countryid");
+
+                    b.ToTable("state");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -260,6 +339,10 @@ namespace CoreMoryatools.DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -311,6 +394,8 @@ namespace CoreMoryatools.DataAccess.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -397,6 +482,74 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("CoreMoryatools.Models.ApplicationUser", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<int>("FK_agentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("address1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("address2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("cityid")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("createddate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("deviceid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gstno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isactive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isdeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("latitude")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("logindate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("longitude")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("state")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("usertype")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("whatappno")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
+                });
+
+            modelBuilder.Entity("CoreMoryatools.Models.city", b =>
+                {
+                    b.HasOne("CoreMoryatools.Models.state", "state")
+                        .WithMany()
+                        .HasForeignKey("stateid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CoreMoryatools.Models.product", b =>
                 {
                     b.HasOne("CoreMoryatools.Models.Category", "category")
@@ -411,6 +564,15 @@ namespace CoreMoryatools.DataAccess.Migrations
                     b.HasOne("CoreMoryatools.Models.product", "product")
                         .WithMany()
                         .HasForeignKey("pid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CoreMoryatools.Models.state", b =>
+                {
+                    b.HasOne("CoreMoryatools.Models.country", "country")
+                        .WithMany()
+                        .HasForeignKey("countryid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

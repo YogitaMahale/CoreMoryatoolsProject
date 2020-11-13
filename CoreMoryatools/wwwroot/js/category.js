@@ -21,6 +21,19 @@ function loadtable() {
                     return ` <img src='${data}'   width="50" height="50"/>`
                 }, "width": "20%"
 
+            },
+            {
+                "data": "isactive",
+                "render": function (data) {
+                    if (data) {
+                        return ` <input type="checkbox" checked="checked" />`
+                    }
+                    else {
+                        return ` <input type="checkbox"  />`
+                    }
+                   
+                }, "width": "20%"
+
             }
             , { "data": "shortdesc", "width": "40% " },
           
