@@ -6,7 +6,7 @@
 <div class="content-i">
     <div class="content-box">
         <div class="element-wrapper">
-            <h6 class="element-header">State</h6>
+            <h6 class="element-header">City</h6>
             <div class="element-box">
                 @*<h5 class="form-header">Powerful Datatables</h5>*@
                 <div class="form-desc">
@@ -26,81 +26,83 @@
                         <label>
                             Select State
                         </label>
-                        <select name="stateid" id="stateid"  class="form-control"
+                        <select name="stateid" id="stateid" class="form-control"
                                 asp-items="@(new SelectList(String.Empty,"id","Name"))">
 
 
-                            <option>--- Select  ---</option>
+                            @*<option>--- Select  ---</option>*@
                         </select>
 
 
-                        
+
                     </div>
                     <div class="col-12 text-right">
-                        <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Create New State</a>
+                        <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Create New City</a>
                     </div>
                 </div>
-               
+
                 <div class="table-responsive">
                     <table id="tblData" width="100%" class="table table-striped table-lightfont">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 @*<th>Country Code</th>*@
-                               
+
                                 <th></th>
                             </tr>
                         </thead>
                         @*<tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                        </tfoot>*@
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start date</th>
+                                    <th>Salary</th>
+                                </tr>
+                            </tfoot>*@
 
                         @*<tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td>$320,800</td>
-                            </tr>
-                           
-                        </tbody>*@
+                                <tr>
+                                    <td>Tiger Nixon</td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td>$320,800</td>
+                                </tr>
+
+                            </tbody>*@
                     </table>
                 </div>
             </div>
         </div>
-         
-        
+
+
     </div>
 </div>
 
 
 @section Scripts{
- 
-    <script src="~/js/State.js"></script>
+
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/js/city.js"></script>
     <script type="text/javascript">
     $(function() {
-        @*$("#countryid").change(function () {
+        $("#stateid").change(function () {
 
           //  var url = '@Url.Content("~/")' + 'CityRegistration/getstatebyid';
-            var ddlsource = "#countryid";
-            
+            var ddlsource = "#stateid";
+
             loadtable1($(ddlsource).val());
-           
-        });*@
+
+
+        });
 
         $("#countryid").change(function () {
-
-            var url = '@Url.Content("~/")' + 'city/getstatebyid';
-            var ddlsource = "#stateid";
+            //alert($("#countryid").val());
+            var url = '@Url.Content("~/")' + 'Admin/city/getstatebyid';
+            var ddlsource = "#countryid";
             $.getJSON(url,
                 { id: $(ddlsource).val() },
                 function (data) {
@@ -120,4 +122,3 @@
 
     </script>
 }
- 

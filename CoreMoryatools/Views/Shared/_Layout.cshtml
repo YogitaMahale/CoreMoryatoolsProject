@@ -37,7 +37,7 @@
     <div class="all-wrapper with-side-panel solid-bg-all">
         <div aria-hidden="true" class="onboarding-modal modal fade animated show-on-load" role="dialog" tabindex="-1">
             <div class="modal-dialog modal-centered" role="document" style="display:none;">
-                <div class="modal-content text-center" >
+                <div class="modal-content text-center">
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span class="close-label">Skip Intro</span><span class="os-icon os-icon-close"></span></button>
                     <div class="onboarding-slider-w">
                         <div class="onboarding-slide">
@@ -419,7 +419,9 @@
                             </div>
                             <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
                             <ul>
-                                <li>
+
+                               
+                                @*<li>
                                     <a href="apps_email.html"><i class="os-icon os-icon-mail-01"></i><span>Incoming Mail</span></a>
                                 </li>
                                 <li>
@@ -433,7 +435,7 @@
                                 </li>
                                 <li>
                                     <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
                     </div>
@@ -592,16 +594,16 @@
                                     <li> @Html.ActionLink("State", "Index", "State", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
                                     <li> @Html.ActionLink("City", "Index", "city", new { area = "Admin" }, new { @class = "navbar-brand" })</li>
 
-                                    
+
                                     @*<li><a asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a></li>*@
                                     @*<li><a href="layouts_menu_side_full.html">Side Menu Light</a></li>
-        <li><a href="layouts_menu_side_full_dark.html">Side Menu Dark</a></li>
-        <li>
-            <a href="layouts_menu_side_transparent.html">Side Menu Transparent <strong class="badge badge-danger">New</strong></a>
-        </li>
-        <li><a href="apps_pipeline.html">Side &amp; Top Dark</a></li>
-        <li><a href="apps_projects.html">Side &amp; Top</a></li>
-        <li><a href="layouts_menu_side_mini.html">Mini Side Menu</a></li>*@
+                                        <li><a href="layouts_menu_side_full_dark.html">Side Menu Dark</a></li>
+                                        <li>
+                                            <a href="layouts_menu_side_transparent.html">Side Menu Transparent <strong class="badge badge-danger">New</strong></a>
+                                        </li>
+                                        <li><a href="apps_pipeline.html">Side &amp; Top Dark</a></li>
+                                        <li><a href="apps_projects.html">Side &amp; Top</a></li>
+                                        <li><a href="layouts_menu_side_mini.html">Mini Side Menu</a></li>*@
                                 </ul>
                                 <ul class="sub-menu">
                                     <li><a href="layouts_menu_side_mini_dark.html">Mini Menu Dark</a></li>
@@ -832,7 +834,7 @@
             </div>
             <div class="content-w">
                 <div class="top-bar color-scheme-transparent">
-                   
+
                     <div class="top-menu-controls">
                         <div class="element-search autosuggest-search-activator"><input placeholder="Start typing to search..." /></div>
                         <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
@@ -879,26 +881,26 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
                             <i class="os-icon os-icon-ui-46"></i>
                             <div class="os-dropdown">
                                 <div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
 
                                 <ul>
-                    <li>
-                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-49"></i><span>profile settings</span></a>
-                    </li>
-                    <li>
-                        <a href="users_profile_small.html"><i class="os-icon os-icon-grid-10"></i><span>billing info</span></a>
-                    </li>
-                    <li>
-                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-44"></i><span>my invoices</span></a>
-                    </li>
-                    <li>
-                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-15"></i><span>cancel account</span></a>
-                    </li>
-                </ul>
+                                    <li>
+                                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-49"></i><span>profile settings</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="users_profile_small.html"><i class="os-icon os-icon-grid-10"></i><span>billing info</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-44"></i><span>my invoices</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="users_profile_small.html"><i class="os-icon os-icon-ui-15"></i><span>cancel account</span></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="logged-user-w">
@@ -915,22 +917,22 @@
                                     <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
                                     <partial name="_LoginPartial" />
                                     @*<ul>
-                                        <li>
-                                            <a href="apps_email.html"><i class="os-icon os-icon-mail-01"></i><span>Incoming Mail</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="users_profile_big.html"><i class="os-icon os-icon-user-male-circle2"></i><span>Profile Details</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Billing Details</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
-                                        </li>
-                                    </ul>*@
+                                            <li>
+                                                <a href="apps_email.html"><i class="os-icon os-icon-mail-01"></i><span>Incoming Mail</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="users_profile_big.html"><i class="os-icon os-icon-user-male-circle2"></i><span>Profile Details</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Billing Details</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
+                                            </li>
+                                        </ul>*@
                                 </div>
                             </div>
                         </div>
@@ -938,8 +940,8 @@
                 </div>
                 <ul class="breadcrumb">
                     @*<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="index.html">Products</a></li>
-                    <li class="breadcrumb-item"><span>Laptop with retina screen</span></li>*@
+                        <li class="breadcrumb-item"><a href="index.html">Products</a></li>
+                        <li class="breadcrumb-item"><span>Laptop with retina screen</span></li>*@
                 </ul>
                 <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
                 <div class="content-i">
@@ -1730,42 +1732,42 @@
     @RenderSection("Scripts", required: false)
 </body>
 @*<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoreMoryatools</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoreMoryatools</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
+            </nav>
+        </header>
         <div class="container">
-            &copy; 2020 - CoreMoryatools - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
-</body>*@
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - CoreMoryatools - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+    </body>*@
 </html>
