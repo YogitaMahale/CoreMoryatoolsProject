@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-i">
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">State</h6>
+            <div class="element-box">
+                @*<h5 class="form-header">Powerful Datatables</h5>*@
+                <div class="form-desc">
+                    <div class="col-sm-8">
+                        <label>
+                            Select Country
+                        </label>
+                        <select name="countryid" id="countryid" class="form-control"
+                                asp-items="@(new SelectList(ViewBag.countrylist,"id","Name"))">
+
+
+                            <option>--- Select  ---</option>
+                        </select>
+                        @*<span asp-validation-for="cid" class="text-danger"></span>*@
+                    </div>
+
+                    <div class="col-12 text-right">
+                        <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Create New State</a>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+                    <table id="tblData" width="100%" class="table table-striped table-lightfont">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                @*<th>Country Code</th>*@
+                               
+                                <th></th>
+                            </tr>
+                        </thead>
+                        @*<tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>
+                            </tr>
+                        </tfoot>*@
+
+                        @*<tbody>
+                            <tr>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
+                                <td>2011/04/25</td>
+                                <td>$320,800</td>
+                            </tr>
+                           
+                        </tbody>*@
+                    </table>
+                </div>
+            </div>
+        </div>
+         
+        
+    </div>
+</div>
+
+
+@section Scripts{
+ 
+    <script src="~/js/State.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#countryid").change(function () {
+
+          //  var url = '@Url.Content("~/")' + 'CityRegistration/getstatebyid';
+            var ddlsource = "#countryid";
+            //alert($(ddlsource).val());
+            loadtable1($(ddlsource).val());
+            //$.getJSON(url,
+            //    { id: $(ddlsource).val() },
+            //    function (data) {
+            //    //   console.log(data);
+            //        var item = '';
+            //        $("#stateid").empty();
+            //        $.each(data, function (i, row) {
+
+            //            item += "<option value='" + row.value + "'>" + row.text + "  </option > ";
+            //           // alert(row);
+            //        });
+            //        $("#stateid").html(item);
+            //    }
+            //)
+        });
+    });
+
+    </script>
+}
+ 

@@ -2,23 +2,22 @@
 $(document).ready(function () {
 
 
-    loadtable();
+   // loadtable();
 });
 
-function loadtable() {
+function loadtable1(id) {
     datatable = $('#tblData').DataTable({
         "ajax": {
-            "url": "/Admin/country/GetALL"
+            "url": "/Admin/State/GetALL?countryid=" + id
             // "type": "GET",
             //"datatype": "json"
         },
         "columns": [
-            { "data": "name", "width": "20% " }
- 
+            
              
            
             
-            , { "data": "countrycode", "width": "40% " },
+              { "data": "name", "width": "40% " },
           
             //{ "data": "img", "width": "30% " },
           
@@ -27,10 +26,10 @@ function loadtable() {
                 "render": function (data) {
                     return `
 <div class="text-center">
-    <a href="/Admin/country/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
+    <a href="/Admin/State/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
         Edit
     </a>
-    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/country/Delete/${data}")>
+    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/State/Delete/${data}")>
         Delete
     </a>
 </div>`
@@ -39,6 +38,7 @@ function loadtable() {
             }
 
         ]
+        , "bDestroy": true
     });
 }
 
