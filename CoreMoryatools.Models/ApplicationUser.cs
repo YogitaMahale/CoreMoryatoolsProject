@@ -21,8 +21,8 @@ namespace CoreMoryatools.Models
         public string address1 { get; set; }
 
         public string address2 { get; set; }
-        public int  cityid { get; set; }
-        public string state { get; set; }
+        public int?  cityid { get; set; }
+       
 
         public string latitude { get; set; }
         public string longitude { get; set; }
