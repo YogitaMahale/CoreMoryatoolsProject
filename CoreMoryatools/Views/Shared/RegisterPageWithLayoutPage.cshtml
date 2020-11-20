@@ -18,7 +18,7 @@
                             </div>
 
 
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label asp-for="Input.name"> </label>
                                 <input class="form-control" asp-for="Input.name" data-error="Your Name is invalid"  type="text" />
                                 @*<div class="help-block form-text with-errors form-control-feedback"></div>*@
@@ -26,7 +26,7 @@
                             </div>
 
 
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
 
 
                                 <label asp-for="Input.address1"> </label>
@@ -35,19 +35,19 @@
 
 
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label asp-for="Input.PhoneNumber"> </label>
                                 <input class="form-control" asp-for="Input.PhoneNumber"  type="text" />
                                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
 
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-sm-6">
                                 <label asp-for="Input.Email"> </label>
                                 <input class="form-control" asp-for="Input.Email"  type="text" />
                                 <span asp-validation-for="Input.Email" class="text-danger"></span>
 
                             </div>
-                            <div class="row">
+                            <div class="row col-sm-6">
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for=""> Password</label>
@@ -64,7 +64,7 @@
                             </div>
                             @if (User.IsInRole(CoreMoryatools.Utility.SD.Role_Admin))
                             {
-                                <div class="form-group">
+                                <div class="form-group col-sm-6">
                                     <label asp-for="Input.Role"></label>
                                     @Html.DropDownListFor(m => m.Input.Role, Model.Input.roleList, "--Select-- ", new { @class = "form-control" })
                                 </div>

@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace CoreMoryatools.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class StateController : Controller
     {
         private readonly IUnitofWork _unitofWork;

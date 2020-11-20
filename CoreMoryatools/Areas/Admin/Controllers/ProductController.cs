@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using CoreMoryatools.DataAccess.Repository.IRepository;
 using CoreMoryatools.Models;
 using CoreMoryatools.Models.ViewModels;
+using CoreMoryatools.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CoreMoryatools.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductController : Controller
     {
         private readonly  IWebHostEnvironment _hostingEnvironment;
