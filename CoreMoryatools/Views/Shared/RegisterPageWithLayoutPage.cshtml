@@ -1,12 +1,8 @@
-﻿@*@model CoreMoryatools.Models.ViewModels.CategoryCreateViewModel
-        //ViewBag.Title = "Add Category";
-    }*@
-
-@model CoreMoryatools.Models.ViewModels.CategoryCreateViewModel
+﻿@model CoreMoryatools.Areas.Identity.Pages.Account.RegisterModel
 @{
     var title = "Create Category";
 
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="content-i">
     <div class="content-box">
@@ -14,51 +10,83 @@
             <div class="col-sm-12">
                 <div class="element-wrapper">
                     <div class="element-box">
-                        <form method="post" enctype="multipart/form-data" asp-action="Create">
-                            <h5 class="form-header">Add New Category</h5>
+                        <form method="post" enctype="multipart/form-data" asp-route-returnUrl="@Model.ReturnUrl">
+                            <h5 class="form-header">Create new account </h5>
                             <div class="form-desc">
                                 @*Validation of the form is made possible using powerful validator plugin for bootstrap.
-                                    <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
+            <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
                             </div>
-                            <div class="form-group col-sm-6">
-                                <label asp-for="Name"> </label>
-                                <input class="form-control" asp-for="Name" data-error="Your email address is invalid" placeholder="Enter email" required="required" type="text" />
+
+
+                            <div class="form-group">
+                                <label asp-for="Input.name"> </label>
+                                <input class="form-control" asp-for="Input.name" data-error="Your Name is invalid"  type="text" />
                                 @*<div class="help-block form-text with-errors form-control-feedback"></div>*@
-                                <span asp-validation-for="Name" class="text-danger"></span>
+                                <span asp-validation-for="Input.name" class="text-danger"></span>
                             </div>
-                            <div class="form-group col-sm-6">
 
 
-                                <label asp-for="shortdesc"> </label>
-                                <input class="form-control" asp-for="shortdesc" placeholder="Password" required="required" type="text" />
-                                @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
+                            <div class="form-group">
 
 
-                            </div>
-                            <div class="form-group col-sm-6">
-
-
-                                <label asp-for="longdescp"> </label>
-                                <input class="form-control" asp-for="longdescp" placeholder="Password" required="required" type="text" />
-                                @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
+                                <label asp-for="Input.address1"> </label>
+                                <input class="form-control" asp-for="Input.address1" type="text" />
+                                <span asp-validation-for="Input.address1" class="text-danger"></span>
 
 
                             </div>
-                            <div class="form-row col-sm-6">
-                                 
-                                <div class="form-group col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Input.PhoneNumber"> </label>
+                                <input class="form-control" asp-for="Input.PhoneNumber"  type="text" />
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Email"> </label>
+                                <input class="form-control" asp-for="Input.Email"  type="text" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for=""> Password</label>
+                                        <input class="form-control" asp-for="Input.Password" type="password" />
+                                        @*<div class="pre-icon os-icon os-icon-fingerprint"></div>*@
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Confirm Password</label>
+                                        <input class="form-control" asp-for="Input.ConfirmPassword" type="password" />
+                                    </div>
+                                </div>
+                            </div>
+                            @if (User.IsInRole(CoreMoryatools.Utility.SD.Role_Admin))
+                            {
+                                <div class="form-group">
+                                    <label asp-for="Input.Role"></label>
+                                    @Html.DropDownListFor(m => m.Input.Role, Model.Input.roleList, "--Select-- ", new { @class = "form-control" })
+                                </div>
+
+                            }
+
+                            @*<div class="form-row">
+                                <div class="form-group col-md-2">
                                     <label asp-for="img"></label>
+                                </div>
+                                <div class="form-group col-md-6">
                                     <div class="btn btn-primary btn-icon-text">
                                         <i class="fas fa-cloud-upload-alt"></i>
                                         <input asp-for="img" type="file" value="Upload" />
                                         <span asp-validation-for="img" class="text-danger"></span>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*@
 
                             @*<div class="form-check">
-                                    <label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to terms and conditions</label>
-                                </div>*@
+            <label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to terms and conditions</label>
+        </div>*@
                             <div class="form-buttons-w">
                                 @*<button class="btn btn-primary" type="submit">Submit</button>*@
 
@@ -317,76 +345,3 @@
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-@*<div class="col-md-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="breadcrumb-item"><a asp-action="Index">  Category List</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">New   Category</li>
-                    </ol>
-                </nav><br /><br />
-
-
-                <form method="post" enctype="multipart/form-data" asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-
-
-
-                    <div class="form-row">
-
-
-                        <div class="form-group col-md-2">
-                            <label asp-for="Name"></label>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input asp-for="Name" class="form-control" placeholder="Enter Name.." />
-                            <span asp-validation-for="Name" class="text-danger"></span>
-                        </div>
-                        <div class="form-group col-md-2">
-
-                        </div>
-
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label asp-for="img"></label>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <div class="btn btn-primary btn-icon-text">
-                                <i class="fas fa-cloud-upload-alt"></i>
-                                <input asp-for="img" type="file" value="Upload" />
-                                <span asp-validation-for="img" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <button type="submit" class="btn btn-rounded btn-primary float-left"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Save</button>
-
-
-                        <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
-                        <label id="divMessage"></label>
-                        <br />
-                        <br />
-                        <br />
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    @section Scripts{
-        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
-
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript">
-
-
-    </script>*@

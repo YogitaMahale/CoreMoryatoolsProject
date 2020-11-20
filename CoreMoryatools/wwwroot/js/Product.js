@@ -122,11 +122,11 @@ function loadtable1(id) {
             { "data": "landingPrice", "width": "20% " },
             { "data": "superwholesaleprice", "width": "20% " },
             { "data": "dealerprice", "width": "20% " },
-            { "data": "wholesaleprice", "width": "20% " },
-            { "data": "customerprice", "width": "20% " },
-            { "data": "gst", "width": "20% " },
-            { "data": "quantites", "width": "20% " },
-            { "data": "realStock", "width": "20% " },
+            { "data": "wholesaleprice", "width": "10% " },
+            { "data": "customerprice", "width": "10% " },
+            { "data": "gst", "width": "10% " },
+            { "data": "quantites", "width": "10% " },
+            { "data": "realStock", "width": "10% " },
 
 
             //{
@@ -142,14 +142,26 @@ function loadtable1(id) {
                 "render": function (data) {
                     return `
 <div class="text-center">
-    <a href="/Admin/Product/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
-        Edit
+    <a href="/Admin/Product/Edit/${data}" class="btn btn-sm btn-success text-white" style="cursor:pointer">
+   <i class="os-icon os-icon-ui-49"></i>
+         Edit
     </a>
-    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Product/Delete/${data}")>
-        Delete
+ &nbsp;
+    <a  class="btn btn-sm btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Product/Delete/${data}")>
+        <i class="os-icon os-icon-ui-15"></i>Delete
     </a>
 </div>`
-                }, "width": "20%"
+//                    return `
+//<div class="text-center">
+//    <a href="/Admin/Product/Edit/${data}" class="btn btn-sm btn-success text-white" style="cursor:pointer">
+//       <i class="os-icon os-icon-ui-49"></i> Edit
+//    </a>
+//&nbsp;
+//    <a  class="btn btn-danger btn-sm text-white" style="cursor:pointer" onclick=Delete("/Admin/Product/Delete/${data}")>
+//     <i class="os-icon os-icon-ui-15"></i>    Delete
+//    </a>
+//</div>`
+                }, "width": "70%"
 
             }
 

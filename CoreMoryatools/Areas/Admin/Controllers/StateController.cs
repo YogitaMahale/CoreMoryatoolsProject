@@ -137,16 +137,28 @@ namespace CoreMoryatools.Areas.Admin.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var obj = _unitofWork.state.Get(id);
-            if (obj == null)
+            var obj1 = _unitofWork.city.GetAll().Where(x => x.stateid == id && x.isdeleted == false).ToList();
+            if (obj1 == null || obj1.Count == 0)
             {
-                return Json(new { success = false, message = "Error while deleteing" });
-            }
-            obj.isdeleted = true;
+                var obj = _unitofWork.state.Get(id);
+                if (obj == null)
+                {
+                    return Json(new { success = false, message = "Error while deleteing" });
+                }
+                obj.isdeleted = true;
 
-            _unitofWork.state.Update(obj);
-            _unitofWork.Save();
-            return Json(new { success = true, message = "Delete Successfuly" });
+                _unitofWork.state.Update(obj);
+                _unitofWork.Save();
+                return Json(new { success = true, message = "Delete Successfuly" });
+            }
+            else
+            {
+
+                return Json(new { success = false, message = "Already City added in this State" });
+
+            }
+
+
         }
         #endregion
     }

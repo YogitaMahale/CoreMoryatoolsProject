@@ -11,7 +11,7 @@ namespace CoreMoryatools.Models.ViewModels
          
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Select Category Name")]
+        [Display(Name = "Select Category")]
         public int cid { get; set; }
 
 

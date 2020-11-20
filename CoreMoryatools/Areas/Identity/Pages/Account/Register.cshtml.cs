@@ -73,13 +73,17 @@ namespace CoreMoryatools.Areas.Identity.Pages.Account
 
 
             [Required(ErrorMessage = "Name is Required")]
-
+            [Display(Name = "Name")]
             public string name { get; set; }
+
+            [Required]          
+            [Display(Name = "Mobile No.")]
             public string PhoneNumber { get; set; }
-          
+            [Required]            
+            [Display(Name = "Address")]
             public string address1 { get; set; }
 
-           
+
 
             //[Required]
             //[Display(Name = "Select Country")]
@@ -87,13 +91,14 @@ namespace CoreMoryatools.Areas.Identity.Pages.Account
 
             //[Required]
             //[Display(Name = "Select State")]
-            
+
             //public int stateid { get; set; }
             //[Required]
             //[Display(Name = "Select City")]
             //public int cityid { get; set; }
-           
-           
+
+             
+            [Display(Name = "Role")]
             public string Role { get; set; }
             public IEnumerable<SelectListItem> roleList { get; set; }
         }

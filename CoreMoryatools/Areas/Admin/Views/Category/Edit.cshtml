@@ -15,37 +15,47 @@
                             <h5 class="form-header">Edit Category</h5>
                             <div class="form-desc">
                                 @*Validation of the form is made possible using powerful validator plugin for bootstrap.
-                                    <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
+            <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
                             </div>
-                            <div class="form-group">
+                            <div class="form-group  col-sm-6">
                                 <label asp-for="Name"> </label>
-                                <input class="form-control" asp-for="Name"  type="text" />
+                                <input class="form-control" asp-for="Name" type="text" />
                                 @*<div class="help-block form-text with-errors form-control-feedback"></div>*@
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group  col-sm-6">
 
 
                                 <label asp-for="shortdesc"> </label>
-                                <input class="form-control" asp-for="shortdesc"  type="text" />
+                                <input class="form-control" asp-for="shortdesc" type="text" />
                                 @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
 
 
                             </div>
-                            <div class="form-group">
+                            <div class="form-group  col-sm-6">
 
 
                                 <label asp-for="longdescp"> </label>
-                                <input class="form-control" asp-for="longdescp"  type="text" />
+                                <input class="form-control" asp-for="longdescp" type="text" />
                                 @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
 
 
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label asp-for="img"></label>
-                                </div>
+                            @*<div class="form-row  col-sm-6">
+
+
+                <label asp-for="img"></label>
+                <div class="btn btn-primary btn-icon-text">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <input asp-for="img" type="file" value="Upload" />
+                    <span asp-validation-for="img" class="text-danger"></span>
+                </div>
+
+        </div>*@
+                            <div class="form-row col-sm-6">
+
                                 <div class="form-group col-md-6">
+                                    <label asp-for="img"></label>
                                     <div class="btn btn-primary btn-icon-text">
                                         <i class="fas fa-cloud-upload-alt"></i>
                                         <input asp-for="img" type="file" value="Upload" />
@@ -53,10 +63,9 @@
                                     </div>
                                 </div>
                             </div>
-
                             @*<div class="form-check">
-                                    <label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to terms and conditions</label>
-                                </div>*@
+            <label class="form-check-label"><input class="form-check-input" type="checkbox" />I agree to terms and conditions</label>
+        </div>*@
                             <div class="form-buttons-w">
                                 @*<button class="btn btn-primary" type="submit">Submit</button>*@
 

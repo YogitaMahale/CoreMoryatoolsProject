@@ -19,7 +19,7 @@ function loadtable() {
                 "data": "img",
                 "render": function (data) {
                     return ` <img src='${data}'   width="50" height="50"/>`
-                }, "width": "20%"
+                }, "width": "10%"
 
             },
             {
@@ -32,7 +32,7 @@ function loadtable() {
                         return ` <input type="checkbox"  />`
                     }
                    
-                }, "width": "20%"
+                }, "width": "10%"
 
             }
             , { "data": "shortdesc", "width": "40% " },
@@ -44,11 +44,13 @@ function loadtable() {
                 "render": function (data) {
                     return `
 <div class="text-center">
-    <a href="/Admin/Category/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
-        Edit
+    <a href="/Admin/Category/Edit/${data}" class="btn btn-sm btn-success text-white" style="cursor:pointer">
+   <i class="os-icon os-icon-ui-49"></i>
+         Edit
     </a>
-    <a  class="btn btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Category/Delete/${data}")>
-        Delete
+ &nbsp;
+    <a  class="btn btn-sm btn-danger text-white" style="cursor:pointer" onclick=Delete("/Admin/Category/Delete/${data}")>
+        <i class="os-icon os-icon-ui-15"></i>Delete
     </a>
 </div>`
                 }, "width": "20%" 
