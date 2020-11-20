@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Text;
 using CoreMoryatools.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -27,6 +28,8 @@ namespace CoreMoryatools.DataAccess.Data
         public DbSet<country> country { get; set; }
         public DbSet<state> state { get; set; }
         public DbSet<city> city { get; set; }
+        public DbSet<Expense> Expense { get; set; }
+        public DbSet<orderstatus> orderstatus { get; set; }
 
     }
 }
