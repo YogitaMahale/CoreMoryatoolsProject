@@ -24,6 +24,7 @@ namespace CoreMoryatools.DataAccess.Repository
             city = new cityRepository(_db);
             orderstatuss = new orderstatusRepository(_db);
             expenses = new ExpenseRepository(_db);
+            bankmaster = new bankmasterRepository(_db);
 
         }
         public IApplicationUserRepository applicationUser  { get; private set; }
@@ -41,7 +42,7 @@ namespace CoreMoryatools.DataAccess.Repository
 
         public IExpenseRepository expenses { get; private set; }
         public IorderstatusRepository orderstatuss { get; private set; }
-
+        public IbankmasterRepository bankmaster { get; private set; }
         //public IshoppingCartsRepository shoppingCarts => throw new NotImplementedException();
 
         public void Dispose()

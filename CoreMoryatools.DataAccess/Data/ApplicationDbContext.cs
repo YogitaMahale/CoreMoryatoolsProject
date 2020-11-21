@@ -30,6 +30,8 @@ namespace CoreMoryatools.DataAccess.Data
         public DbSet<city> city { get; set; }
         public DbSet<Expense> Expense { get; set; }
         public DbSet<orderstatus> orderstatus { get; set; }
+        public DbSet<bankmaster> bankmaster { get; set; }
 
     }
 }
+

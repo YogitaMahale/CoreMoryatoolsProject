@@ -1,7 +1,7 @@
 ﻿ 
 @model CoreMoryatools.Models.ViewModels.orderstatusIndexViewModel
 @{
-    var title = "Edit Country";
+    var title = "Edit Order Status";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -12,7 +12,7 @@
                 <div class="element-wrapper">
                     <div class="element-box">
                         <form method="post" enctype="multipart/form-data" asp-action="Edit">
-                            <h5 class="form-header">Edit Country</h5>
+                            <h5 class="form-header">Edit Order Status</h5>
                             <div class="form-desc">
                                 @*Validation of the form is made possible using powerful validator plugin for bootstrap.
                                     <a href="http://1000hz.github.io/bootstrap-validator/" target="_blank">Learn more about Bootstrap Validator</a>*@
@@ -27,7 +27,7 @@
 
 
                                 <label asp-for="NotificationMsg"> </label>
-                                <input class="form-control" asp-for="NotificationMsg"  type="text" />
+                                <textarea class="form-control" asp-for="NotificationMsg" rows="5"> </textarea>
                                 @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
 
 

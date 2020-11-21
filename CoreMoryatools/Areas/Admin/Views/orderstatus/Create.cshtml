@@ -30,7 +30,8 @@
 
 
                                 <label asp-for="NotificationMsg"> </label>
-                                <input class="form-control" asp-for="NotificationMsg"   type="text" />
+                                @*<input class="form-control" asp-for="NotificationMsg" rows="5" type="text" />*@
+                                <textarea class="form-control" asp-for="NotificationMsg" rows="5"> </textarea>
                                 @*<div class="help-block form-text text-muted form-control-feedback">Minimum of 6 characters</div>*@
 
 

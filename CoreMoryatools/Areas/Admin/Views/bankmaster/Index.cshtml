@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-i">
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">Bank Master</h6>
+            <div class="element-box">
+                @*<h5 class="form-header">Powerful Datatables</h5>*@
+                <div class="form-desc">
+                    <div class="col-12 text-right">
+                        <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i> &nbsp; Create Bank</a>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+                    <table id="tblData" width="100%" class="table table-striped table-lightfont">
+                        <thead>
+                            <tr>
+                                
+                                <th>Name</th>
+                                <th>IFSC Code</th>
+                                <th>Branch</th>
+                                <th>Account No.</th>
+                                <th>Account Holder Name</th>
+                                
+
+                                @*//  bankname, bankifsccode, bankbranch, accountno, accountholdername*@
+                                <th></th>
+                            </tr>
+                        </thead>
+                       
+                    </table>
+                </div>
+            </div>
+        </div>
+         
+         
+    </div>
+</div>
+
+
+@section Scripts{
+ 
+    <script src="~/js/bankmaster.js"></script>
+}
+ 

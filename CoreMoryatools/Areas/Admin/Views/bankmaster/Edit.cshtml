@@ -1,0 +1,85 @@
+﻿ 
+@model CoreMoryatools.Models.ViewModels.bankmasterIndexViewModel
+@{
+    var title = "Edit Country";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content-i">
+    <div class="content-box">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="element-wrapper">
+                    <div class="element-box">
+                        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+                            <h5 class="form-header">Edit Country</h5>
+                            <div class="form-group  row ">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label" asp-for="bankname"> </label>
+
+                                    <input class="form-control" asp-for="bankname"
+                                           type="text" />
+                                    <span asp-validation-for="bankname" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label" asp-for="bankifsccode"> </label>
+
+                                    <input class="form-control" asp-for="bankifsccode"
+                                           type="text" />
+                                    <span asp-validation-for="bankifsccode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group  row ">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label" asp-for="bankbranch"> </label>
+
+                                    <input class="form-control" asp-for="bankbranch"
+                                           type="text" />
+                                    <span asp-validation-for="bankbranch" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="col-form-label" asp-for="accountno"> </label>
+
+                                    <input class="form-control" asp-for="accountno"
+                                           type="text" />
+                                    <span asp-validation-for="accountno" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group  row ">
+                                <div class="col-sm-6">
+                                    <label class="col-form-label" asp-for="accountholdername"> </label>
+
+                                    <input class="form-control" asp-for="accountholdername"
+                                           type="text" />
+                                    <span asp-validation-for="accountholdername" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-6">
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-buttons-w">
+
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-square" style="margin-right:0.7em"></i>Update</button>
+
+
+                                <a asp-action="index" class="btn btn-rounded btn-success float-right"><i class="fas fa-caret-square-left" style="margin-right:0.7em"></i>Back</a>
+                                <label id="divMessage"></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ 
