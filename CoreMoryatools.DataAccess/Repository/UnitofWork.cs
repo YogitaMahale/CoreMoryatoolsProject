@@ -22,6 +22,9 @@ namespace CoreMoryatools.DataAccess.Repository
             country  = new countryRepository(_db);
             state   = new stateRepository(_db);
             city = new cityRepository(_db);
+            orderstatuss = new orderstatusRepository(_db);
+            expenses = new ExpenseRepository(_db);
+
         }
         public IApplicationUserRepository applicationUser  { get; private set; }
         public ICategoryRepository category { get; private set; }
@@ -35,6 +38,9 @@ namespace CoreMoryatools.DataAccess.Repository
         public IcountryRepository country { get; private set; }
         public IstateRepository  state { get; private set; }
         public IcityRepository  city{ get; private set; }
+
+        public IExpenseRepository expenses { get; private set; }
+        public IorderstatusRepository orderstatuss { get; private set; }
 
         //public IshoppingCartsRepository shoppingCarts => throw new NotImplementedException();
 

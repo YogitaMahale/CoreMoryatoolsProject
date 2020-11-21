@@ -16,6 +16,9 @@ namespace CoreMoryatools.DataAccess.Repository.IRepository
 
         IstateRepository state  { get; }
         IcityRepository city { get; }
+
+        IorderstatusRepository  orderstatuss { get; }
+        IExpenseRepository expenses { get; }
         // IOrderDetailsRepository orderDetailsRepository { get; }
         void Save();
     }
